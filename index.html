@@ -1,13 +1,46 @@
 <html>
 <head>
+
 <script src='js/jquery.min.js'></script>
 <!-- link href='../fullcalendar/fullcalendar.css' rel='stylesheet' /  -->
+<style> 
+#grid {
+    width: 300px;
+    height: 600px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    outline: 1px solid;
+    float: left;
+}
+</style>
 </head>
 
 <body>
+
 	<div>
 		<p> Vidudaya Neranjan Bandara</p>
 	</div>
+	<div id="grid">
+		<div class="cell" onclick="myFunction(this)"></div>
+		<div class="cell" onclick="myFunction(this)"></div>
+		<div class="cell" onclick="myFunction(this)"></div>
+		<div class="cell" onclick="myFunction(this)"></div>
+		<div class="cell" onclick="myFunction(this)"></div>
+		<div class="cell" onclick="myFunction(this)"></div>
+		<div class="cell" onclick="myFunction(this)"></div>
+		<div class="cell" onclick="myFunction(this)"></div>
+		<div class="cell" onclick="myFunction(this)"></div>
+		
+	</div>
 
 </body>
+<script>
+function myFunction(divObj){
+	divObj.style.background= '#ccc';
+}
+</script>
+
 </html>
