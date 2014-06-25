@@ -24,7 +24,7 @@
 $( document ).ready(function() {
     $("#grid").empty();
 	for ( var i = 0; i < 100; i++ ) {
-		$("#grid").append("<div class='cell' onclick='myFunction(this)'></div>");
+		$("#grid").append("<div class='cell' id='"+i+"' onclick='myFunction(this)'></div>");
 	}
 });
 
@@ -37,7 +37,12 @@ function Create2DArray(rows,coloms) {
 
 }
 
-function checkWin(){
+function getColAndRow(){
+
+
+} 
+
+function checkWin(divObj){
 
 	alert("hello");
 
@@ -60,8 +65,9 @@ function checkWin(){
 <script>
 function myFunction(divObj){	
 	//$(divObj).toggleClass( "select" );
+	alert(divObj.id);
 	$(divObj).addClass( "select" );
-	checkWin();
+	checkWin(divObj);
 }
 </script>
 
