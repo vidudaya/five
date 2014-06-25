@@ -27,6 +27,7 @@ $( document ).ready(function() {
 	for ( var i = 0; i < 100; i++ ) {
 		$("#grid").append("<div class='cell' id='"+i+"' onclick='myFunction(this)'></div>");
 	}
+	cellArray=Create2DArray(10,10);
 });
 
 function Create2DArray(rows,coloms) {
@@ -45,13 +46,13 @@ return [row,column];
 } 
 
 function checkWin(divObj){
-	cellArray=Create2DArray(10,10);
+	
 	var position= getColAndRow(divObj.id);
 	var prow=position[0];
 	var pcolumn=position[1];
-	//var win = new Boolean(false);
+	var win = new Boolean(false);
 	cellArray[prow][pcolumn]=1;
-	if(checkAlongRow(prow,pcolumn)>=5)/*|| checkAlongColumn(prow,pcolumn)>=5 || checkAlongDiagonal1(prow,pcolumn)>=5 || checkAlongDiagonal2(prow,pcolumn)>=5 */
+	if(checkAlongRow(prow,pcolumn)>=5|| checkAlongColumn(prow,pcolumn)>=5 || checkAlongDiagonal1(prow,pcolumn)>=5 || checkAlongDiagonal2(prow,pcolumn)>=5)
 		win=true;
 	if(win==true)
 	alert("you win");
@@ -80,13 +81,14 @@ function checkWin(divObj){
 	column1++;
 	}
 	rowTot= leftTot+rightTot-1;
+	
 	return rowTot;
  }
- /* function checkAlongColumn(row, column)
+ function checkAlongColumn(row, column)
  {
 	var row1=row;
 	var column1=column;
-	var upTot=0,
+	var upTot=0;
 	var downTot=0;
 	while(cellArray[row1][column1]==1)
 	{
@@ -111,7 +113,7 @@ function checkWin(divObj){
   {
   var row1=row;
 	var column1=column;
-	var upTot=0,
+	var upTot=0;
 	var downTot=0;
 	while(cellArray[row1][column1]==1)
 	{
@@ -138,7 +140,7 @@ function checkWin(divObj){
   {
   var row1=row;
 	var column1=column;
-	var upTot=0,
+	var upTot=0;
 	var downTot=0;
 	while(cellArray[row1][column1]==1)
 	{
@@ -160,7 +162,7 @@ function checkWin(divObj){
 	}
 	diagonal2Tot=upTot+downTot-1;
 	return diagonal2Tot;
-  } */
+  } 
 
 
 </script>
