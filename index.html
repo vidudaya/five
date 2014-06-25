@@ -28,9 +28,19 @@ $( document ).ready(function() {
 	}
 });
 
+function Create2DArray(rows,coloms) {
+  var x = new Array(rows);
+  for (var i = 0; i < rows; i++) {
+    x[i] = new Array(coloms);
+  }
+  return x;
+
+}
+
 function checkWin(){
 
-alert("hello");
+	alert("hello");
+
 }
 
 
