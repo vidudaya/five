@@ -21,6 +21,7 @@
 }
 </style>
 <script>
+var cellArray;
 $( document ).ready(function() {
     $("#grid").empty();
 	for ( var i = 0; i < 100; i++ ) {
@@ -37,16 +38,129 @@ function Create2DArray(rows,coloms) {
 
 }
 
-function getColAndRow(){
-
-
+function getColAndRow(id){
+var row= parseInt(id/10+"");
+var column= id%10;
+return [row,column];
 } 
 
 function checkWin(divObj){
-
-	alert("hello");
+	cellArray=Create2DArray(10,10);
+	var position= getColAndRow(divObj.id);
+	var prow=position[0];
+	var pcolumn=position[1];
+	//var win = new Boolean(false);
+	cellArray[prow][pcolumn]=1;
+	if(checkAlongRow(prow,pcolumn)>=5)/*|| checkAlongColumn(prow,pcolumn)>=5 || checkAlongDiagonal1(prow,pcolumn)>=5 || checkAlongDiagonal2(prow,pcolumn)>=5 */
+		win=true;
+	if(win==true)
+	alert("you win");
 
 }
+ function checkAlongRow(row, column)
+ {
+	var row1=row;
+	var column1=column;
+	var leftTot=0;
+	var rightTot=0;
+	while(cellArray[row1][column1]==1)
+	{
+	leftTot+=cellArray[row1][column1];
+	if(column1==0)
+	break;
+	column1--;
+	}
+	column1=column;
+	row1=row;
+	while(cellArray[row1][column1]==1)
+	{
+	rightTot+=cellArray[row1][column1];
+	if(column1==9)
+	break;
+	column1++;
+	}
+	rowTot= leftTot+rightTot-1;
+	return rowTot;
+ }
+ /* function checkAlongColumn(row, column)
+ {
+	var row1=row;
+	var column1=column;
+	var upTot=0,
+	var downTot=0;
+	while(cellArray[row1][column1]==1)
+	{
+	upTot+=cellArray[row1][column1];
+	if(row1==0)
+	break;
+	row1--;
+	}
+	column1=column;
+	row1=row;
+	while(cellArray[row1][column1]==1)
+	{
+	downTot+=cellArray[row1][column1];
+	if(row1==9)
+	break;
+	row1++;
+	}
+	columnTot=upTot+downTot-1;
+	return columnTot;
+ }
+  function checkAlongDiagonal1(row, column)
+  {
+  var row1=row;
+	var column1=column;
+	var upTot=0,
+	var downTot=0;
+	while(cellArray[row1][column1]==1)
+	{
+	upTot+=cellArray[row1][column1];
+	if(row1==0 ||column1==9)
+	break;
+	row1--;
+	column1++;
+	}
+	column1=column;
+	row1=row;
+	while(cellArray[row1][column1]==1)
+	{
+	downTot+=cellArray[row1][column1];
+	if(row1==9 || column1==0)
+	break;
+	row1++;
+	column1--;
+	}
+	diagonal1Tot=upTot+downTot-1;
+	return diagonal1Tot;
+  }
+  function checkAlongDiagonal2(row, column)
+  {
+  var row1=row;
+	var column1=column;
+	var upTot=0,
+	var downTot=0;
+	while(cellArray[row1][column1]==1)
+	{
+	upTot+=cellArray[row1][column1];
+	if(row1==0 ||column1==0)
+	break;
+	row1--;
+	column1--;
+	}
+	column1=column;
+	row1=row;
+	while(cellArray[row1][column1]==1)
+	{
+	downTot+=cellArray[row1][column1];
+	if(row1==9 || column1==9)
+	break;
+	row1++;
+	column1++;
+	}
+	diagonal2Tot=upTot+downTot-1;
+	return diagonal2Tot;
+  } */
 
 
 </script>
