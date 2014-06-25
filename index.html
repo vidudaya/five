@@ -5,17 +5,30 @@
 <!-- link href='../fullcalendar/fullcalendar.css' rel='stylesheet' /  -->
 <style> 
 #grid {
-    width: 300px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     outline: 1px solid;
     float: left;
 }
+
+.select {
+	background-color : #ccc;
+}
 </style>
+<script>
+$( document ).ready(function() {
+    $("#grid").empty();
+	for ( var i = 0; i < 100; i++ ) {
+		$("#grid").append("<div class='cell' onclick='myFunction(this)'></div>");
+	}
+});
+
+</script>
 </head>
 
 <body>
@@ -24,22 +37,13 @@
 		<p> Vidudaya Neranjan Bandara</p>
 	</div>
 	<div id="grid">
-		<div class="cell" onclick="myFunction(this)"></div>
-		<div class="cell" onclick="myFunction(this)"></div>
-		<div class="cell" onclick="myFunction(this)"></div>
-		<div class="cell" onclick="myFunction(this)"></div>
-		<div class="cell" onclick="myFunction(this)"></div>
-		<div class="cell" onclick="myFunction(this)"></div>
-		<div class="cell" onclick="myFunction(this)"></div>
-		<div class="cell" onclick="myFunction(this)"></div>
-		<div class="cell" onclick="myFunction(this)"></div>
-		
+		 
 	</div>
 
 </body>
 <script>
-function myFunction(divObj){
-	divObj.style.background= '#ccc';
+function myFunction(divObj){	
+	$(divObj).toggleClass( "select" );
 }
 </script>
 
