@@ -14,10 +14,20 @@
     height: 50px;
     outline: 1px solid;
     float: left;
+	text-align:center;
 }
 
-.select {
-	background-color : #ccc;
+//.select {
+	//background-color : #ccc;
+//}
+
+.header {
+	height : 50px;
+}
+
+div.select:before {
+   content:url(images/b4.png);
+   display: inline-block;
 }
 </style>
 <script>
@@ -54,8 +64,10 @@ function checkWin(divObj){
 	cellArray[prow][pcolumn]=1;
 	if(checkAlongRow(prow,pcolumn)>=5|| checkAlongColumn(prow,pcolumn)>=5 || checkAlongDiagonal1(prow,pcolumn)>=5 || checkAlongDiagonal2(prow,pcolumn)>=5)
 		win=true;
-	if(win==true)
-	alert("you win");
+	if(win==true){
+		alert("you win");
+		location.reload(true);
+	}
 
 }
  function checkAlongRow(row, column)
@@ -170,18 +182,20 @@ function checkWin(divObj){
 
 <body>
 
-	<div>
-		<p> Vidudaya Neranjan Bandara</p>
+	<div class="header">
+		<!--p> Vidudaya Neranjan Bandara</p-->
 	</div>
-	<div id="grid">
-		 
+	<div style="width:40%; margin:0 auto;">
+		<div id="grid">
+			 
+		</div>
 	</div>
 
 </body>
 <script>
 function myFunction(divObj){	
 	//$(divObj).toggleClass( "select" );
-	alert(divObj.id);
+	//alert(divObj.id);
 	$(divObj).addClass( "select" );
 	checkWin(divObj);
 }
