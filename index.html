@@ -29,9 +29,17 @@ div.select:before {
    content:url(images/b4.png);
    display: inline-block;
 }
+
+div.change{
+content:url(images/b2.png);
+   display: inline-block;
+}
+
 </style>
 <script>
 var cellArray;
+var cellsRow;
+
 $( document ).ready(function() {
     $("#grid").empty();
 	for ( var i = 0; i < 100; i++ ) {
@@ -55,6 +63,13 @@ var column= id%10;
 return [row,column];
 } 
 
+function getcellid(row,col)
+{
+	var a= row+""+col;
+	var id=parseInt(a);
+	return id;
+}
+
 function checkWin(divObj){
 	
 	var position= getColAndRow(divObj.id);
@@ -65,13 +80,22 @@ function checkWin(divObj){
 	if(checkAlongRow(prow,pcolumn)>=5|| checkAlongColumn(prow,pcolumn)>=5 || checkAlongDiagonal1(prow,pcolumn)>=5 || checkAlongDiagonal2(prow,pcolumn)>=5)
 		win=true;
 	if(win==true){
-		alert("you win");
-		location.reload(true);
+		
+		//alert("you win");
+		for(var i=0;i<5;i++)
+		{
+		$("#"+cellsRow[i]).addClass("change");
+		}
+		
+		
+		//location.reload(true);
 	}
 
 }
  function checkAlongRow(row, column)
  {
+	cellsRow=new Array(5);
+	var i=0;
 	var row1=row;
 	var column1=column;
 	var leftTot=0;
@@ -79,6 +103,12 @@ function checkWin(divObj){
 	while(cellArray[row1][column1]==1)
 	{
 	leftTot+=cellArray[row1][column1];
+	if(i<5)
+	{
+	cellsRow[i]= getcellid(row1,column1);
+	i++;
+	}
+	
 	if(column1==0)
 	break;
 	column1--;
@@ -87,7 +117,13 @@ function checkWin(divObj){
 	row1=row;
 	while(cellArray[row1][column1]==1)
 	{
+	
 	rightTot+=cellArray[row1][column1];
+	if(i<5 && row1!=row)
+	{
+	cellsRow[i]= getcellid(row1,column1);
+	i++;
+	}
 	if(column1==9)
 	break;
 	column1++;
@@ -98,6 +134,8 @@ function checkWin(divObj){
  }
  function checkAlongColumn(row, column)
  {
+	cellsRow=new Array(5);
+	var i=0;
 	var row1=row;
 	var column1=column;
 	var upTot=0;
@@ -105,6 +143,11 @@ function checkWin(divObj){
 	while(cellArray[row1][column1]==1)
 	{
 	upTot+=cellArray[row1][column1];
+	if(i<5)
+	{
+	cellsRow[i]= getcellid(row1,column1);
+	i++;
+	}
 	if(row1==0)
 	break;
 	row1--;
@@ -114,6 +157,11 @@ function checkWin(divObj){
 	while(cellArray[row1][column1]==1)
 	{
 	downTot+=cellArray[row1][column1];
+	if(i<5 && row1!=row)
+	{
+	cellsRow[i]= getcellid(row1,column1);
+	i++;
+	}
 	if(row1==9)
 	break;
 	row1++;
@@ -123,13 +171,20 @@ function checkWin(divObj){
  }
   function checkAlongDiagonal1(row, column)
   {
-  var row1=row;
+	cellsRow=new Array(5);
+	var i=0;
+	var row1=row;
 	var column1=column;
 	var upTot=0;
 	var downTot=0;
 	while(cellArray[row1][column1]==1)
 	{
 	upTot+=cellArray[row1][column1];
+	if(i<5)
+	{
+	cellsRow[i]= getcellid(row1,column1);
+	i++;
+	}
 	if(row1==0 ||column1==9)
 	break;
 	row1--;
@@ -140,6 +195,11 @@ function checkWin(divObj){
 	while(cellArray[row1][column1]==1)
 	{
 	downTot+=cellArray[row1][column1];
+	if(i<5 && row1!=row)
+	{
+	cellsRow[i]= getcellid(row1,column1);
+	i++;
+	}
 	if(row1==9 || column1==0)
 	break;
 	row1++;
@@ -150,13 +210,20 @@ function checkWin(divObj){
   }
   function checkAlongDiagonal2(row, column)
   {
-  var row1=row;
+	cellsRow=new Array(6);
+	var i=0;
+	var row1=row;
 	var column1=column;
 	var upTot=0;
 	var downTot=0;
 	while(cellArray[row1][column1]==1)
 	{
 	upTot+=cellArray[row1][column1];
+	if(i<5)
+	{
+	cellsRow[i]= getcellid(row1,column1);
+	i++;
+	}
 	if(row1==0 ||column1==0)
 	break;
 	row1--;
@@ -167,6 +234,11 @@ function checkWin(divObj){
 	while(cellArray[row1][column1]==1)
 	{
 	downTot+=cellArray[row1][column1];
+	if(i<5 && row1!=row)
+	{
+	cellsRow[i]= getcellid(row1,column1);
+	i++;
+	}
 	if(row1==9 || column1==9)
 	break;
 	row1++;
