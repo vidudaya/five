@@ -1,55 +1,4 @@
-<html>
-<head>
-
-<script src='js/jquery.min.js'></script>
-<script src='js/logic.js'></script>
-<!-- link href='../fullcalendar/fullcalendar.css' rel='stylesheet' /  -->
-<style> 
-#grid {
-    width: 500px;
-    height: 500px;
-}
-
-.cell {
-    width: 50px;
-    height: 50px;
-    outline: 1px solid;
-    float: left;
-	text-align:center;
-}
-
-//.select {
-	//background-color : #ccc;
-//}
-
-.header {
-	height : 50px;
-}
-
-div.select:before {
-   content:url(images/b4.png);
-   display: inline-block;
-}
-
-div.change{
-content:url(images/b2.png);
-   display: inline-block;
-}
-
-</style>
-<script>
-var cellArray;
-var cellsRow;
-
-$( document ).ready(function() {
-    $("#grid").empty();
-	for ( var i = 0; i < 100; i++ ) {
-		$("#grid").append("<div class='cell' id='"+i+"' onclick='myFunction(this)'></div>");
-	}
-	cellArray=Create2DArray(10,10);
-});
-
-/*function Create2DArray(rows,coloms) {
+function Create2DArray(rows,coloms) {
   var x = new Array(rows);
   for (var i = 0; i < rows; i++) {
     x[i] = new Array(coloms);
@@ -247,31 +196,4 @@ function checkWin(divObj){
 	}
 	diagonal2Tot=upTot+downTot-1;
 	return diagonal2Tot;
-  } */
-
-
-</script>
-</head>
-
-<body>
-
-	<div class="header">
-		<!--p> Vidudaya Neranjan Bandara</p-->
-	</div>
-	<div style="width:40%; margin:0 auto;">
-		<div id="grid">
-			 
-		</div>
-	</div>
-
-</body>
-<script>
-function myFunction(divObj){	
-	//$(divObj).toggleClass( "select" );
-	//alert(divObj.id);
-	$(divObj).addClass( "select" );
-	checkWin(divObj);
-}
-</script>
-
-</html>
+  } 
