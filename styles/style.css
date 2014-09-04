@@ -1,0 +1,30 @@
+#grid {
+    width: 500px;
+    height: 500px;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    outline: 1px solid;
+    float: left;
+	text-align:center;
+}
+
+//.select {
+	//background-color : #ccc;
+//}
+
+.header {
+	height : 50px;
+}
+
+div.select:before {
+   content:url(../images/b4.png);
+   display: inline-block;
+}
+
+div.change{
+content:url(../images/b2.png);
+   display: inline-block;
+}
